@@ -1,0 +1,112 @@
+/* You can add global styles to this file, and also import other style files */
+
+body{
+  background-color: white;
+}
+
+#nav-bar{
+  background-color: #DFE0DF;
+}
+#login{
+  background-color: black;
+}
+#login a{
+  color: whitesmoke;
+  margin-left: 1rem;
+  margin-right: .5rem;
+}
+
+#principal-menu li {
+  display: inline;
+ }
+
+  #principal-menu ul a {
+    color: black;
+    margin-left: 1rem;
+    font-size: 1.1rem;
+    
+   
+   
+   }
+  
+  #principal-menu ul a:hover,
+  #principal-menu ul li.active a {
+    color: steelblue  ;
+    font-size: 1.2rem;
+  }
+
+  #Carrousel{
+   
+    height: 50vh;
+  }
+  #Carrousel{
+    padding: 1.5rem;
+  }
+  #phrase{
+    font-size: 1.5rem;
+   text-align: center;
+  }
+
+  #how_it_works{
+    background-color: white;
+    padding: 4rem;
+  }
+
+  .vl {
+    border-left: 2px solid black;
+    height: 100vh;
+  }
+  
+  
+  #principal-menu {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 100%;
+            flex: 1 1 100%; }
+  
+  #principal-menu ul {
+    padding: 0;
+    list-style: none;
+    margin: 1rem 0 0 0; }
+  
+  #principal-menu ul a {
+    display: block;
+    padding: .5em 0;
+    text-align: right;
+    color: #111111;
+    
+    border-top: 0.1px solid #111111;
+    text-decoration: none; }
+  
+  #principal-menu ul a:hover,
+  #principal-menu ul li.active a {
+    color: lightsteelblue; }
+
+  @media (min-width: 768px) {
+    #principal-menu {
+      height: auto !important;
+      display: block; }
+  
+    #principal-menu ul {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      margin: 0 0 0 0;
+      -webkit-box-pack: flex-end;
+          -ms-flex-pack: flex-end;
+              justify-content: flex-end; }
+  
+    #principal-menu ul li a {
+      padding: .2rem;
+      text-transform: none;
+      margin: 0 1rem;
+      border-top: 0;
+      color: #111111;
+
+      -webkit-transition: all .3s ease;
+      transition: all .3s ease; }
+  
+    #principal-menu ul li.active a,
+    #principal-menu ul li a:hover {
+      color:lightsteelblue;
+       }
+    }
