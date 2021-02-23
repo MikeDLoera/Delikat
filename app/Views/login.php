@@ -3,10 +3,12 @@
 
 <head>
     <title>Login - Delikat</title>
-    <?php echo $this->include('head'); ?>
+    <?php echo $this->include('componente/head'); ?>
+    <script src="<?php echo base_url('js/modulo/login.js'); ?>"></script>
 </head>
 
 <body>
+    <?php echo $this->include('componente/navbar'); ?>
     <!---->
     <section style="background-color: white; height: 15vh;">
     </section>
@@ -32,7 +34,7 @@
 
         <?php if (session('error')) { ?>
             <div class="row justify-content-center">
-                <div class="col-10 col-lg-5">
+                <div class="col-10 col-sm-5 col-lg-4 col-xl-3">
                     <div class="alert alert-danger" role="alert">
                         <strong>Error!</strong> Usuario o contraseña inválidos.
                     </div>
@@ -42,21 +44,9 @@
 
         <div class=" col-12 d-flex justify-content-center">
 
-            <button type="submit" class="btn btn-primary" style="background-color: 23A888; border-color: 23A888;" onclick="$('#loginForm').submit()">Iniciar Sesión</button>
+            <button type="submit" class="btn btn-primary" style="background-color: 23A888; border-color: 23A888;" onclick="$('#loginForm').submit()">Iniciar sesión</button>
         </div>
     </div>
-
-    <script>
-        $(document).ready(function() {
-            $('#pass').on('keypress', function(e) {
-                if (event.keyCode == 13 || event.which == 13) {
-                    $('#loginForm').submit();
-                }
-            });
-
-            $('#user').focus();
-        });
-    </script>
 
 </body>
 

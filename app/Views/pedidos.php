@@ -3,11 +3,12 @@
 
 <head>
     <title>Pedidos - Delikat</title>
-    <?php echo $this->include('head'); ?>
+    <?php echo $this->include('componente/head'); ?>
+    <script src="<?php echo base_url('js/modulo/pedidos.js'); ?>"></script>
 </head>
 
 <body>
-    <?php echo $this->include('navbar'); ?>
+    <?php echo $this->include('componente/navbar'); ?>
     <!---------------------------MODAL PARA ELIMINAR--------------------->
     <div class="modal" id="ModalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">

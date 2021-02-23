@@ -25,8 +25,8 @@ class Auth implements FilterInterface
         } else {
 
             $privilegios = [
-                'Admin'         => ['reportes', 'pedidos', 'clientes', 'usuarios', 'inventario'],
-                'Capturista'    => ['pedidos', 'clientes', 'inventario'],
+                'Admin'         => ['reportes', 'pedidos', 'clientes', 'usuarios', 'productos', 'movimientos'],
+                'Capturista'    => ['pedidos', 'clientes', 'productos'],
                 'Mesero'        => ['pedidos']
             ];
 

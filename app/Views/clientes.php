@@ -3,12 +3,12 @@
 
 <head>
     <title>Clientes - Delikat</title>
-    <?php echo $this->include('head'); ?>
-    <script src="<?php echo base_url('js/modulo/clientes.js');?>"></script>
+    <?php echo $this->include('componente/head'); ?>
+    <script src="<?php echo base_url('js/modulo/clientes.js'); ?>"></script>
 </head>
 
 <body>
-    <?php echo $this->include('navbar'); ?>
+    <?php echo $this->include('componente/navbar'); ?>
 
     <!-------------------------------------MODAL PARA AGRGEGAR CLIENTE---------------------------------------->
     <div class="pt-4 container">
