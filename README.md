@@ -20,9 +20,9 @@ Abre el archivo `run.bat` o en consola ubicado en la carpeta raíz ejecute `php 
 
 Si desea cambia el puerto deberá configurar `baseURL` en el archivo `.env` y ejecutar `php spark serve --port [Puerto]`
 ```
-#---------------------------------------
+#-------------------------------------------
 # APP
-#---------------------------------------
+#-------------------------------------------
 
   app.baseURL = 'http://localhost:[Puerto]/'
 ```

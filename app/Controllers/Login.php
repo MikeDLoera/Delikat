@@ -21,7 +21,7 @@ class Login extends BaseController
 		$user = strtolower($request->getPost('user'));
 		$pass = $request->getPost('pass');
 
-		$usuario = model('Usuarios');
+		$usuario = model('Login');
 		$getUser = $usuario->obtenerUsuario(['Usuario' => $user]);
 		
 		if (count($getUser) > 0 && password_verify($pass, $getUser[0]['Contraseña'])) {
