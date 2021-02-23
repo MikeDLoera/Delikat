@@ -11,11 +11,9 @@ class Auth implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
-        $uri = strtolower($request->getServer('REQUEST_URI'));
+        require_once('Privilegios.php');
 
-        if ($uri != '/' && substr($uri, strlen($uri) - 1) == '/') {
-            $uri = substr($uri, 0, strlen($uri) - 1);
-        }
+        $uri = requestUri($request);
 
         if (!session('id') != null) {
 
@@ -23,12 +21,7 @@ class Auth implements FilterInterface
                 return redirect()->to(base_url('/'));
             }
         } else {
-
-            $privilegios = [
-                'Admin'         => ['reportes', 'pedidos', 'clientes', 'usuarios', 'productos', 'movimientos'],
-                'Capturista'    => ['pedidos', 'clientes', 'productos'],
-                'Mesero'        => ['pedidos']
-            ];
+            $privilegios = getPrivilegios();
 
             if ($uri == '/') {
                 return redirect()->to(base_url($privilegios[session('rol')][0]));
@@ -47,14 +40,6 @@ class Auth implements FilterInterface
                     throw PageNotFoundException::forPageNotFound();
                 }
             }
-        }
-
-        function getUri(RequestInterface $request)
-        {
-            $url = strtolower($request->getServer('HTTP_HOST') . $request->getServer('REQUEST_URI'));
-            $uri = str_replace(strtolower(explode("://", base_url())[1]), "", $url);
-
-            return $uri;
         }
     }
 

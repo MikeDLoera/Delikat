@@ -16,9 +16,9 @@ Al descargar el proyecto cambie el nombre del archivo `env` a `.env`, dentro de 
 ```
 
 ## Ejecutar el proyecto
-Abre el archivo `run.bat` o en consola ubicado en la carpeta raíz ejecute `php spark serve --port 8088`, posteriormente el proyecto se iniciará en `http://localhost:8088/`
+Abre el archivo `run.bat` o en consola ubicado en la carpeta raíz ejecute `php spark serve`, posteriormente el proyecto se iniciará en `http://localhost:8080/`
 
-Si desea cambia el puerto deberá configurar `baseURL` el archivo `.env` y ejecutar `php spark serve --port [Puerto]`
+Si desea cambia el puerto deberá configurar `baseURL` en el archivo `.env` y ejecutar `php spark serve --port [Puerto]`
 ```
 #---------------------------------------
 # APP

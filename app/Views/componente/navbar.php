@@ -19,7 +19,7 @@
                     <div class="p-md-4 col-sm-12 col-md-10">
                         <div id="principal-menu" class="collapse">
                             <ul>
-                                <?php if (rol(['Admin'])) { ?>
+                                <?php if (privilegio('reportes')) { ?>
                                     <li data-toggle="collapse" data-target="#principal-menu">
                                         <a href="<?php echo base_url('reportes'); ?>">
                                             <i class="fas fa-chart-line"></i> Reportes
@@ -27,7 +27,7 @@
                                     </li>
                                 <?php } ?>
 
-                                <?php if (rol(['Admin', 'Capturista', 'Mesero'])) { ?>
+                                <?php if (privilegio('pedidos')) { ?>
                                     <li data-toggle="collapse" data-target="#principal-menu">
                                         <a href="<?php echo base_url('pedidos'); ?>">
                                             <i class="fab fa-wpforms"></i> Pedidos
@@ -35,7 +35,7 @@
                                     </li>
                                 <?php } ?>
 
-                                <?php if (rol(['Admin', 'Capturista'])) { ?>
+                                <?php if (privilegio('clientes')) { ?>
                                     <li data-toggle="collapse" data-target="#principal-menu">
                                         <a href="<?php echo base_url('clientes'); ?>">
                                             <i class="fas fa-user-friends"></i> Clientes
@@ -43,7 +43,7 @@
                                     </li>
                                 <?php } ?>
 
-                                <?php if (rol(['Admin'])) { ?>
+                                <?php if (privilegio('usuarios')) { ?>
                                     <li data-toggle="collapse" data-target="#principal-menu">
                                         <a href="<?php echo base_url('usuarios'); ?>">
                                             <i class="fas fa-users"></i> Usuarios
@@ -51,7 +51,7 @@
                                     </li>
                                 <?php } ?>
 
-                                <?php if (rol(['Admin', 'Capturista'])) { ?>
+                                <?php if (privilegio('productos')) { ?>
                                     <li data-toggle="collapse" data-target="#principal-menu">
                                         <a href="<?php echo base_url('productos'); ?>">
                                             <i class="fas fa-boxes"></i> Productos
@@ -59,7 +59,7 @@
                                     </li>
                                 <?php } ?>
 
-                                <?php if (rol(['Admin'])) { ?>
+                                <?php if (privilegio('movimientos')) { ?>
                                     <li data-toggle="collapse" data-target="#principal-menu">
                                         <a href="<?php echo base_url('movimientos'); ?>">
                                             <i class="fas fa-calculator"></i> Movimientos
@@ -85,13 +85,19 @@
 
 
     <?php
-    function rol(array $roles)
+
+    use function App\Filters\getPrivilegios;
+
+    function privilegio(String $controller)
     {
-        foreach ($roles as $i) {
-            if (session('rol') == $i) {
+        $privilegios = getPrivilegios()[session('rol')];
+
+        foreach ($privilegios as $i) {
+            if ($controller == $i) {
                 return true;
             }
         }
+
         return false;
     }
     ?>
