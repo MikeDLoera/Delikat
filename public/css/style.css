@@ -1,108 +1,144 @@
 /* You can add global styles to this file, and also import other style files */
 
-body{
+body {
   background-color: white;
 }
 
-#nav-bar{
-  background-color: #DFE0DF;
+#nav-bar {
+  background-color: #dfe0df;
 }
-#login{
+
+#login {
   background-color: black;
 }
-#login a{
+
+#login a {
   color: whitesmoke;
   margin-left: 1rem;
-  margin-right: .5rem;
+  margin-right: 0.5rem;
 }
 
 #principal-menu li {
   display: inline;
- }
+}
 
-  #principal-menu ul a {
-    color: black;
-    margin-left: 0.5rem;
-    font-size: 1.05rem;
-   }
-  
-  #principal-menu ul a:hover,
-  #principal-menu ul li.active a {
-    color: steelblue  ;
-    font-size: 1.1rem;
-  }
+#principal-menu ul a {
+  color: black;
+  margin-left: 0.5rem;
+  font-size: 1.05rem;
+}
 
-  #Carrousel{
-   
-    height: 50vh;
-  }
-  #Carrousel{
-    padding: 1.5rem;
-  }
-  #phrase{
-    font-size: 1.5rem;
-   text-align: center;
-  }
+#principal-menu ul a:hover,
+#principal-menu ul li.active a {
+  color: steelblue;
+  font-size: 1.1rem;
+}
 
-  #how_it_works{
-    background-color: white;
-    padding: 4rem;
-  }
+#Carrousel {
+  height: 50vh;
+}
 
-  .vl {
-    border-left: 2px solid black;
-    height: 100vh;
-  }
-  
+#Carrousel {
+  padding: 1.5rem;
+}
+
+#phrase {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+#how_it_works {
+  background-color: white;
+  padding: 4rem;
+}
+
+.vl {
+  border-left: 2px solid black;
+  height: 100vh;
+}
+
+#principal-menu {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 100%;
+  flex: 1 1 100%;
+}
+
+#principal-menu ul {
+  padding: 0;
+  list-style: none;
+  margin: 1rem 0 0 0;
+}
+
+#principal-menu ul a {
+  display: block;
+  padding: 0.5em 0;
+  text-align: center;
+  color: #111111;
+
+  border-top: 0.1px solid #111111;
+  text-decoration: none;
+}
+
+#principal-menu ul a:hover,
+#principal-menu ul li.active a {
+  color: #23a988;
+}
+
+@media (min-width: 768px) {
   #principal-menu {
-    -webkit-box-flex: 1;
-        -ms-flex: 1 1 100%;
-            flex: 1 1 100%; }
-  
-  #principal-menu ul {
-    padding: 0;
-    list-style: none;
-    margin: 1rem 0 0 0; }
-  
-  #principal-menu ul a {
+    height: auto !important;
     display: block;
-    padding: .5em 0;
-    text-align: center;
+  }
+
+  #principal-menu ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 0;
+    -webkit-box-pack: flex-end;
+    -ms-flex-pack: flex-end;
+    justify-content: flex-end;
+  }
+
+  #principal-menu ul li a {
+    padding: 0.2rem;
+    text-transform: none;
+    margin: 0 0.4rem;
+    border-top: 0;
     color: #111111;
-    
-    border-top: 0.1px solid #111111;
-    text-decoration: none; }
-  
-  #principal-menu ul a:hover,
-  #principal-menu ul li.active a {
-    color: #23A988; }
 
-  @media (min-width: 768px) {
-    #principal-menu {
-      height: auto !important;
-      display: block; }
-  
-    #principal-menu ul {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      margin: 0;
-      -webkit-box-pack: flex-end;
-          -ms-flex-pack: flex-end;
-              justify-content: flex-end; }
-  
-    #principal-menu ul li a {
-      padding: .2rem;
-      text-transform: none;
-      margin: 0 0.4rem;
-      border-top: 0;
-      color: #111111;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
 
-      -webkit-transition: all .3s ease;
-      transition: all .3s ease; }
-  
-    #principal-menu ul li.active a,
-    #principal-menu ul li a:hover {
-      color:#23A988;
-       }
-    }
+  #principal-menu ul li.active a,
+  #principal-menu ul li a:hover {
+    color: #23a988;
+  }
+}
+
+
+/* Datatable style */
+#tabla_paginate {
+  margin: 10px;
+  padding: 0;
+  border: 1px solid #dee2e6;
+}
+
+#tabla_paginate a,
+#tabla_paginate a.disabled:hover {
+  margin: 0;
+  background: #ffffff !important;
+  color: #23a888 !important;
+  border-color: #ffffff;
+}
+
+#tabla_paginate a:hover {
+  background: #CDD2CC !important;
+  border-color: #dee2e6;
+}
+
+#tabla_paginate a.current {
+  background: #23a888 !important;
+  color: #ffffff !important;
+}

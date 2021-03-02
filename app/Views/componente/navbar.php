@@ -6,7 +6,7 @@
                 <div class="col-3 col-md-2">
                     <div class="mr-auto p-2 ">
                         <a href="<?php echo base_url(); ?>">
-                            <img src="<?php echo base_url('img/logo.png'); ?>" width="70px">
+                            <img src="<?php echo base_url('images/logo.png'); ?>" width="70px">
                         </a>
                     </div>
                 </div>

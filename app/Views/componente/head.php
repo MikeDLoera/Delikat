@@ -7,7 +7,21 @@
     <script src="<?php echo base_url('js/popper.min.js'); ?>"></script>
     <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
     <link rel="stylesheet" href="<?php echo base_url('css/style.css'); ?>" media="screen" />
-    <script src="<?php echo base_url('js/datatables.min.js'); ?>"></script>
+
+    <?php
+
+    use function App\Filters\requestUri;
+
+    if (requestUri() != '/') { ?>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/datatables.min.css'); ?>" />
+        <script src="<?php echo base_url('js/datatables.min.js'); ?>"></script>
+        <script src="<?php echo base_url('js/datatables_lenguages.js'); ?>"></script>
+
+        <link rel="stylesheet" href="<?php echo base_url('css/alertify.min.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/alertify.default.min.css'); ?>">
+        <script src="<?php echo base_url('js/alertify.min.js'); ?>"></script>
+    <?php } ?>
+
     <script>
         function baseUrl(uri = '/') {
             var url = "<?php echo base_url(); ?>";
@@ -16,3 +30,4 @@
             return url + uri;
         }
     </script>
+    

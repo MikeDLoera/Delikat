@@ -5,6 +5,21 @@
     <title>Clientes - Delikat</title>
     <?php echo $this->include('componente/head'); ?>
     <script src="<?php echo base_url('js/modulo/clientes.js'); ?>"></script>
+
+    <style>
+        th {
+            text-align: center;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        th,
+        table {
+            border-bottom: 1px solid #dee2e6 !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -29,21 +44,21 @@
                         <div class="input-group">
                             <div class="input-group-prepend">
                             </div>
-                            <input id="nombre" type="text" class="form-control" placeholder="Nombre">
+                            <input id="nombre" type="text" class="form-control" placeholder="Nombre" />
                             <div class="input-group-append">
                             </div>
                         </div>
                         <br>
                         <div class="input-group">
                             <div class="input-group-prepend"></div>
-                            <input id="celular" type="text" class="form-control" placeholder="Celular">
+                            <input id="celular" type="number" class="form-control" placeholder="Celular" />
                             <div class="input-group-append">
                             </div>
                         </div>
                         <br>
                         <div class="input-group">
                             <div class="input-group-prepend"></div>
-                            <input id="correo" type="text" class="form-control" placeholder="Correo electrónico">
+                            <input id="correo" type="email" class="form-control" placeholder="Correo electrónico" />
                             <div class="input-group-append">
                             </div>
                         </div>
@@ -52,7 +67,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button id="btnGuardarCambios" type="button" class="btn btn-primary" data-dismiss="modal" style="background-color: #23a888; border: #23a888;  ">Guardar
+                        <button id="btnGuardarCambios" type="button" class="btn btn-primary" style="background-color: #23a888; border: #23a888;  ">Guardar
                             Cambios <i class="far fa-save"></i>
                         </button>
                     </div>
@@ -62,7 +77,7 @@
         <br>
 
         <!--------------------------------------------------TABLA DE INVENTARIO--------------------------------------->
-        <table id="tabla" class="table table-striped table-bordered -hover  table-responsive-md">
+        <table id="tabla" class="table table-striped table-bordered -hover table-responsive-md">
             <thead>
                 <tr style="background-color: #DAF0D8">
                     <th scope="col">ID</th>
@@ -78,14 +93,18 @@
             <tbody>
                 <?php for ($i = 0; $i < count($tabla); $i++) { ?>
                     <tr>
-                        <th scope="row"><?php echo $tabla[$i]['id'] ?></th>
-                        <td><?php echo $tabla[$i]['Nombre'] ?></td>
-                        <td><?php echo $tabla[$i]['Celular'] ?></td>
-                        <td><?php echo $tabla[$i]['Correo_Electronico'] ?></td>
-                        <td><?php echo $tabla[$i]['Saldo_Electronico'] ?></td>
-                        <td><button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary" style="background-color: #CDD2CC; border: #000000; color: black;" onclick="getCliente(<?php echo $tabla[$i]['id'] ?>)"><i class="far fa-edit"></i></button>
+                        <th class="id" scope="row"><?php echo $tabla[$i]['id'] ?></th>
+                        <td class="nombre"><?php echo $tabla[$i]['Nombre'] ?></td>
+                        <td class="celular"><?php echo $tabla[$i]['Celular'] ?></td>
+                        <td class="correo"><?php echo $tabla[$i]['Correo_Electronico'] ?></td>
+                        <td class="saldo"><?php echo $tabla[$i]['Saldo_Electronico'] ?></td>
+                        <td class="btnEdit"><button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary border-0 text-dark edit" style="background-color: #CDD2CC;" onclick="getCliente(this, <?php echo $tabla[$i]['id'] ?>)">
+                                <i class="far fa-edit"></i>
+                            </button>
                         </td>
-                        <td><button type="button" data-toggle="modal" data-target="#ModalDelete" class="btn btn-primary" style="background-color: #F3A697; border: #000000; color: black;" onclick="setId(<?php echo $tabla[$i]['id'] ?>)"><i class="far fa-trash-alt"></i></button>
+                        <td class="btnDelete"><button type="button" data-toggle="modal" data-target="#ModalDelete" class="btn btn-primary border-0 text-dark delete" style="background-color: #F3A697;" onclick="setData(this, <?php echo $tabla[$i]['id'] ?>)">
+                                <i class="far fa-trash-alt"></i>
+                            </button>
                         </td>
                     </tr>
                 <?php } ?>
@@ -113,24 +132,6 @@
             </div>
         </div>
     </div>
-    </div>
-    </div>
-    <!------------------------------------------------BOTONES DE PAGINACION DE TABLA----------------------------------------------------------------->
-    <nav class="container" aria-label="...">
-        <ul class="pagination row justify-content-center">
-            <li class="page-item disabled">
-                <a class="page-link" href="#!" tabindex="-1" style="background-color: #ffff; color: #23a888;">Anterior</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#!" style="color: #23a888;">1</a></li>
-            <li class="page-item active">
-                <a class="page-link" href="#!" style="background-color: #23a888;">2 <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#!" style="color: #23a888;">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#!" style="color: #23a888; background-color: #ffff;">Siguiente</a>
-            </li>
-        </ul>
-    </nav>
 
 </body>
 

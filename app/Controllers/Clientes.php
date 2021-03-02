@@ -14,7 +14,7 @@ class Clientes extends BaseController
 	public function index()
 	{
 		$model = model('Clientes');
-		$data['tabla'] = $model->getClientes();
+		$data['tabla'] = $model->findAll();
 
 		return view('clientes', $data);
 	}
@@ -22,14 +22,14 @@ class Clientes extends BaseController
 	public function get($id)
 	{
 		$model = model('Clientes');
-		$response = $model->getCliente($id);
-		if ($response == null) $response = false;
+		$response = $model->find($id);
 		return $this->respond($response);
 	}
 
 	public function set()
 	{
 		$request = Services::request();
+
 		if ($request->getServer('REQUEST_METHOD') == 'POST') {
 			$id = $request->getPost('id');
 			$data = [
@@ -38,8 +38,43 @@ class Clientes extends BaseController
 				'Correo_Electronico' => $request->getPost('correo'),
 			];
 
-			$model = model('Clientes');
-			return $this->respond($model->setCliente($id, $data));
+			$error = false;
+			$errorArray = [];
+
+			if ($data["Nombre"] == "") {
+				$error = true;
+				array_push($errorArray, ["id" => "nombre"]);
+			}
+
+			if (strlen($data["Celular"]) < 10) {
+				$error = true;
+				array_push($errorArray, ["id" => "celular"]);
+			}
+
+			if (!filter_var($data["Correo_Electronico"], FILTER_VALIDATE_EMAIL)) {
+				$error = true;
+				array_push($errorArray, ["id" => "correo"]);
+			}
+			
+			$response = ["saved" => !$error];
+			if (!$error) {
+				$model = model('Clientes');
+
+				if ($id == null) {
+					$data["Saldo_Electronico"] = 0;
+					$id = $model->insert($data);
+				} else {
+					$model->update($id, $data);
+				}
+
+				$response["data"] = $model->find($id);
+				return $this->respond($response);
+
+			} else {
+				$response["data"] = $errorArray;
+				return $this->respond($response);
+			}
+
 		} else {
 			throw PageNotFoundException::forPageNotFound();
 		}
@@ -50,11 +85,10 @@ class Clientes extends BaseController
 		$request = Services::request();
 		if ($request->getServer('REQUEST_METHOD') == 'POST') {
 			$id = $request->getPost('id');
-			
+
 			$model = model('Clientes');
-			$response = $model->deleteCliente($id);
-			if ($response != false) $response = true;
-			return $this->respond($response);
+			$model->where("id", $id)->delete();
+			return $this->respond(true);
 		} else {
 			throw PageNotFoundException::forPageNotFound();
 		}

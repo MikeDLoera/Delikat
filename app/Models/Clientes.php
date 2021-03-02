@@ -6,42 +6,22 @@ use CodeIgniter\Model;
 
 class Clientes extends Model
 {
-    function getClientes()
-    {
-        $clientes = $this->db
-            ->table('clientes');
-        return $clientes->get()->getResultArray();
-    }
+    protected $table      = 'clientes';
+    protected $primaryKey = 'id';
 
-    function getCliente($id)
-    {
-        $cliente = $this->db
-            ->table('clientes')
-            ->where(['id' => $id])
-            ->get()->getRow();
-        return $cliente;
-    }
+    protected $useAutoIncrement = true;
 
-    function setCliente($id, $data)
-    {
-        $cliente = $this->db->table('clientes');
+    protected $returnType     = 'array';
+    protected $useSoftDeletes = false;
 
-        if ($id == null) {
-            $data['Saldo_Electronico'] = 0;
-            return $cliente->insert($data);
-        } else {
-            return $cliente->set($data)
-                ->where('id', $id)
-                ->update();
-        }
-    }
+    protected $allowedFields = ['Nombre', 'Celular', 'Correo_Electronico', 'Saldo_Electronico'];
 
-    function deleteCliente($id)
-    {
-        $cliente = $this->db->table('clientes')
-            ->where('id', $id)
-            ->delete();
+    protected $useTimestamps = false;
+    protected $createdField  = '';
+    protected $updatedField  = '';
+    protected $deletedField  = '';
 
-        return $cliente;
-    }
+    protected $validationRules    = [];
+    protected $validationMessages = [];
+    protected $skipValidation     = false;
 }
